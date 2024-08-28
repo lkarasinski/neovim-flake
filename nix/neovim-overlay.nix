@@ -57,6 +57,7 @@ with final.pkgs.lib; let
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     bufferline-nvim
     neo-tree-nvim
+	kanagawa-nvim
     # ^ UI
     # language support
     # ^ language support

@@ -44,7 +44,7 @@ with final.pkgs.lib; let
     # ^ nvim-cmp extensions
     # git integration plugins
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
-    # TODO: Add lazygit
+    lazygit-nvim
     # telescope and extensions
     telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
     telescope-fzy-native-nvim # https://github.com/nvim-telescope/telescope-fzy-native.nvim

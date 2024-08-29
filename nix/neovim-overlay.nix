@@ -61,6 +61,7 @@ with final.pkgs.lib; let
     bufferline-nvim
     neo-tree-nvim
 	kanagawa-nvim
+    virt-column-nvim
     # ^ UI
     # language support
     # ^ language support

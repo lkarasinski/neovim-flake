@@ -31,6 +31,7 @@ with final.pkgs.lib; let
     nvim-treesitter.withAllGrammars
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
 	# lsp
+	nvim-lspconfig
 	conform-nvim	
 	# ^ lsp
     # nvim-cmp (autocompletion) and extensions
@@ -64,6 +65,7 @@ with final.pkgs.lib; let
     virt-column-nvim
     # ^ UI
     # language support
+	typescript-tools-nvim
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -91,6 +93,8 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     nil # nix LSP
+    typescript
+    typescript-language-server
   ];
 in {
   # This is the neovim derivation

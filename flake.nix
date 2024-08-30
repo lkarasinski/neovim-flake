@@ -46,11 +46,12 @@
       shell = pkgs.mkShell {
         name = "nvim-devShell";
         buildInputs = with pkgs; [
-          # Tools for Lua and Nix development, useful for editing files in this repo
           lua-language-server
           nil
           stylua
           luajitPackages.luacheck
+		  ripgrep
+		  lazygit
         ];
         shellHook = ''
           # symlink the .luarc.json generated in the overlay

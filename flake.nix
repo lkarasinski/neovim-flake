@@ -8,10 +8,10 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
+    avante-nvim = {
+       url = "github:yetone/avante.nvim";
+       flake = false;
+    };
   };
 
   outputs = inputs @ {

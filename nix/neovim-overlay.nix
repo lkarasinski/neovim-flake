@@ -63,6 +63,7 @@ with final.pkgs.lib; let
     neo-tree-nvim
 	kanagawa-nvim
     virt-column-nvim
+	dressing-nvim
     # ^ UI
     # language support
 	typescript-tools-nvim

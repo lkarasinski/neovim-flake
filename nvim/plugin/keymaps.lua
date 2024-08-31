@@ -115,8 +115,7 @@ keymap.set('n', '<leader>fq', function()
 	vim.cmd('fclose!')
 end, { silent = true, desc = '[f]loating windows: [q]uit/close all' })
 
--- Remap Esc to switch to normal mode and Ctrl-Esc to pass Esc to terminal
-keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'switch to normal mode' })
+-- Remap Ctrl-Esc to pass Esc to terminal
 keymap.set('t', '<C-Esc>', '<Esc>', { desc = 'send Esc to terminal' })
 
 -- Shortcut for expanding to current buffer's directory in command mode

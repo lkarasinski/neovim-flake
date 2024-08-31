@@ -12,6 +12,11 @@
        url = "github:yetone/avante.nvim";
        flake = false;
     };
+
+    img-clip-nvim = {
+       url = "github:HakonHarnes/img-clip.nvim";
+       flake = false;
+    };
   };
 
   outputs = inputs @ {

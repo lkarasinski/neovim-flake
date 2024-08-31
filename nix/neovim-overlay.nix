@@ -85,7 +85,8 @@ with final.pkgs.lib; let
     vim-repeat
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
-    (mkNvimPlugin inputs.avante-nvim "avante-nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
+    (mkNvimPlugin inputs.avante-nvim "avante-nvim")
+    (mkNvimPlugin inputs.img-clip-nvim "img-clip-nvim")
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
   ];

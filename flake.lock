@@ -71,6 +71,22 @@
         "type": "github"
       }
     },
+    "img-clip-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724665867,
+        "narHash": "sha256-TTfRow1rrRZ3+5YPeYAQc+2fsb42wUxTMEr6kfUiKXo=",
+        "owner": "HakonHarnes",
+        "repo": "img-clip.nvim",
+        "rev": "28a32d811d69042f4fa5c3d5fa35571df2bc1623",
+        "type": "github"
+      },
+      "original": {
+        "owner": "HakonHarnes",
+        "repo": "img-clip.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718714799,
@@ -120,6 +136,7 @@
         "avante-nvim": "avante-nvim",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
+        "img-clip-nvim": "img-clip-nvim",
         "nixpkgs": "nixpkgs_2"
       }
     },

@@ -64,6 +64,7 @@ with final.pkgs.lib; let
 	kanagawa-nvim
     virt-column-nvim
 	dressing-nvim
+	nvim-notify
     # ^ UI
     # language support
 	typescript-tools-nvim

@@ -192,6 +192,9 @@ keymap.set('n', '<leader>bco', function()
 	end
 end, { desc = '[b]uffer [c]lose all but current [o]ne' })
 
+-- Copy highlighted text to system clipboard
+keymap.set('v', '<leader>cp', '"+y', { noremap = true, silent = true, desc = '[c]opy to system clipboard' })
+
 --- Disabled keymaps [enable at your own risk]
 
 -- Automatic management of search highlight

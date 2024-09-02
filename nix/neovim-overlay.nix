@@ -65,6 +65,7 @@ with final.pkgs.lib; let
     virt-column-nvim
 	dressing-nvim
 	nvim-notify
+	bufdelete-nvim
     # ^ UI
     # language support
 	typescript-tools-nvim

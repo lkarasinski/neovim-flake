@@ -177,6 +177,21 @@ keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'move [u]p half-page and center' })
 keymap.set('n', '<C-f>', '<C-f>zz', { desc = 'move DOWN [f]ull-page and center' })
 keymap.set('n', '<C-b>', '<C-b>zz', { desc = 'move UP full-page and center' })
 
+-- Buffer deletion keymaps using bufdelete plugin
+keymap.set('n', '<leader>bcc', function()
+	local success, err = pcall(require('bufdelete').bufdelete, 0, false)
+	if not success then
+		vim.notify("Failed to close current buffer: " .. err, vim.log.levels.ERROR)
+	end
+end, { desc = '[b]uffer [c]lose [c]urrent' })
+
+keymap.set('n', '<leader>bco', function()
+	local success, err = pcall(require('bufdelete').bufdelete, vim.fn.range(1, vim.fn.bufnr('$')), false)
+	if not success then
+		vim.notify("Failed to close other buffers: " .. err, vim.log.levels.ERROR)
+	end
+end, { desc = '[b]uffer [c]lose all but current [o]ne' })
+
 --- Disabled keymaps [enable at your own risk]
 
 -- Automatic management of search highlight

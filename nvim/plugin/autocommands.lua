@@ -114,6 +114,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, desc('[lsp] signature help'))
 		keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, desc('lsp add [w]orksp[a]ce folder'))
 		keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, desc('lsp [w]orkspace folder [r]emove'))
+		keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, desc('Open [c]ode [a]ctions'))
 		keymap.set('n', '<space>wl', function()
 			vim.print(vim.lsp.buf.list_workspace_folders())
 		end, desc('[lsp] [w]orkspace folders [l]ist'))

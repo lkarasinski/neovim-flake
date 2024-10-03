@@ -3,6 +3,10 @@ if vim.g.did_load_notify_plugin then
 end
 vim.g.did_load_notify_plugin = true
 
-require('notify').setup({
+local notify = require('notify')
+
+notify.setup({
 	fps = 165,
 })
+
+vim.notify = notify

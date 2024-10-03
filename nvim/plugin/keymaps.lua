@@ -204,6 +204,9 @@ end, { desc = '[b]uffer [c]lose all but current [o]ne' })
 -- Copy highlighted text to system clipboard
 keymap.set('v', '<leader>cp', '"+y', { noremap = true, silent = true, desc = '[c]opy to system clipboard' })
 
+-- Build a typescript app and add errors to quickfix list.
+keymap.set('n', '<leader>pb', ':TypeScriptBuild<CR>', { noremap = true, silent = true, desc = 'Run [p]roject [b]uild' })
+
 --- Disabled keymaps [enable at your own risk]
 
 -- Automatic management of search highlight

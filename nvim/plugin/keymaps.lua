@@ -204,6 +204,14 @@ end, { desc = '[b]uffer [c]lose all but current [o]ne' })
 -- Copy highlighted text to system clipboard
 keymap.set('v', '<leader>cp', '"+y', { noremap = true, silent = true, desc = '[c]opy to system clipboard' })
 
+-- Copy entire file to system clipboard
+keymap.set('n', '<leader>cf', function()
+	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+	local content = table.concat(lines, "\n")
+	vim.fn.setreg('+', content)
+	vim.notify("File copied to system clipboard", vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = '[c]opy [f]ile to system clipboard' })
+
 -- Build a typescript app and add errors to quickfix list.
 keymap.set('n', '<leader>pb', ':TypeScriptBuild<CR>', { noremap = true, silent = true, desc = 'Run [p]roject [b]uild' })
 

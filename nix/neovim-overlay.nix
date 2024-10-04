@@ -66,6 +66,7 @@ with final.pkgs.lib; let
 	dressing-nvim
 	nvim-notify
 	bufdelete-nvim
+	nui-nvim
     # ^ UI
     # language support
 	typescript-tools-nvim

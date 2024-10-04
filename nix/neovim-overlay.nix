@@ -87,10 +87,11 @@ with final.pkgs.lib; let
     vim-repeat
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
-    (mkNvimPlugin inputs.avante-nvim "avante-nvim")
-    (mkNvimPlugin inputs.img-clip-nvim "img-clip-nvim")
+    # (mkNvimPlugin inputs.avante-nvim "avante-nvim")
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
+	avante-nvim
+	img-clip-nvim
   ];
 
   extraPackages = with pkgs; [

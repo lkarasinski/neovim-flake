@@ -1,10 +1,13 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
-{inputs}: final: prev:
-with final.pkgs.lib; let
+{ inputs }:
+final: prev:
+with final.pkgs.lib;
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input
-  mkNvimPlugin = src: pname:
+  mkNvimPlugin =
+    src: pname:
     pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
@@ -30,10 +33,10 @@ with final.pkgs.lib; let
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
     nvim-treesitter.withAllGrammars
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
-	# lsp
-	nvim-lspconfig
-	conform-nvim	
-	# ^ lsp
+    # lsp
+    nvim-lspconfig
+    conform-nvim
+    # ^ lsp
     # nvim-cmp (autocompletion) and extensions
     nvim-cmp # https://github.com/hrsh7th/nvim-cmp
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
@@ -61,19 +64,19 @@ with final.pkgs.lib; let
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     bufferline-nvim
     neo-tree-nvim
-	kanagawa-nvim
-	virt-column-nvim
-	dressing-nvim
-	nvim-notify
-	bufdelete-nvim
-	nui-nvim
+    kanagawa-nvim
+    virt-column-nvim
+    dressing-nvim
+    nvim-notify
+    bufdelete-nvim
+    nui-nvim
     # ^ UI
     # language support
-	typescript-tools-nvim
+    typescript-tools-nvim
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
-	mini-nvim
+    mini-nvim
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
     # ^ navigation/editing enhancement plugins
@@ -90,19 +93,21 @@ with final.pkgs.lib; let
     # (mkNvimPlugin inputs.avante-nvim "avante-nvim")
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
-	avante-nvim
-	img-clip-nvim
+    avante-nvim
+    img-clip-nvim
   ];
 
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
-    nil # nix LSP
-	nixfmt-rfc-style
+    nil
+    # nix LSP
+    nixfmt-rfc-style
     typescript
     typescript-language-server
   ];
-in {
+in
+{
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {

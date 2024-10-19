@@ -1,5 +1,5 @@
 if vim.g.did_load_conform_plugin then
-  return
+	return
 end
 vim.g.did_load_conform_plugin = true
 
@@ -10,7 +10,8 @@ require("conform").setup({
 		javascriptreact = { 'biome-check' },
 		typescript = { 'biome-check' },
 		javascript = { 'biome-check' },
-		json = { 'biome-check' }
+		json = { 'biome-check' },
+		nix = { "nixfmt" }
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()

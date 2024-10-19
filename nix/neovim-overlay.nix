@@ -62,7 +62,7 @@ with final.pkgs.lib; let
     bufferline-nvim
     neo-tree-nvim
 	kanagawa-nvim
-    virt-column-nvim
+	virt-column-nvim
 	dressing-nvim
 	nvim-notify
 	bufdelete-nvim
@@ -98,6 +98,7 @@ with final.pkgs.lib; let
     # language servers, etc.
     lua-language-server
     nil # nix LSP
+	nixfmt-rfc-style
     typescript
     typescript-language-server
   ];

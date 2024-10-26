@@ -7,28 +7,25 @@
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      flake-utils,
-      gen-luarc,
-      ...
-    }:
-    let
-      supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    flake-utils,
+    gen-luarc,
+    ...
+  }: let
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
 
-      # This is where the Neovim derivation is built.
-      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
-    in
+    # This is where the Neovim derivation is built.
+    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
+  in
     flake-utils.lib.eachSystem supportedSystems (
-      system:
-      let
+      system: let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
@@ -55,8 +52,7 @@
             ln -fs ${pkgs.nvim-luarc-json} .luarc.json
           '';
         };
-      in
-      {
+      in {
         packages = rec {
           default = nvim;
           nvim = pkgs.nvim-pkg;
@@ -68,7 +64,7 @@
     )
     // {
       # You can add this overlay to your NixOS configuration
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
       overlays.default = neovim-overlay;
     };
 }

@@ -105,6 +105,7 @@ let
     nixfmt-rfc-style
     typescript
     typescript-language-server
+    nixd
   ];
 in
 {

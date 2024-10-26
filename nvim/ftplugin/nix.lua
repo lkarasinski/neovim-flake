@@ -1,55 +1,43 @@
+local lspconfig = require('lspconfig')
+
 if vim.fn.executable('nixd') ~= 1 then
 	return
 end
 
-local root_files = {
-	'flake.nix',
-	'default.nix',
-	'shell.nix',
-	'configuration.nix',
-	'.git',
-}
-
-vim.lsp.start {
-	name = 'nixd',
-	cmd = { 'nixd' },
-	root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-	capabilities = require('user.lsp').make_client_capabilities(),
+lspconfig.nixd.setup({
+	cmd = { "nixd" },
 	settings = {
 		nixd = {
+			nixpkgs = {
+				expr = "import <nixpkgs> { }",
+			},
 			formatting = {
-				command = "alejandra"
+				command = { "alejandra" },
 			},
 			options = {
-				enable = true,
-				target = {
-					args = {},
-					installable = "<flake>#nixosConfigurations.nixos.config", -- Adjust this to match your flake output
+				nixos = {
+					expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nixos.options',
+				},
+				home_manager = {
+					expr =
+					'(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."lkarasinski@nixos".options',
 				},
 			},
-			eval = {
-				enable = true,
-				workers = 3,
-			},
-		}
+		},
 	},
+	capabilities = require('cmp_nvim_lsp').default_capabilities(),
 	on_attach = function(client, bufnr)
-		vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, desc = 'Show module option documentation' })
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = 'Go to module option definition' })
+		vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-		vim.keymap.set('n', '<leader>no', function()
-			require('telescope.builtin').lsp_workspace_symbols({ query = '' })
-		end, { buffer = bufnr, desc = 'Search NixOS module options' })
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+		vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+		vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+		vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	end,
-}
-
-local has_cmp, cmp = pcall(require, 'cmp')
-if has_cmp then
-	cmp.setup.filetype('nix', {
-		sources = cmp.config.sources({
-			{ name = 'nvim_lsp' },
-			{ name = 'path' },
-			{ name = 'buffer' },
-		})
-	})
-end
+})

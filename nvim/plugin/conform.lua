@@ -11,7 +11,7 @@ require("conform").setup({
 		typescript = { 'biome-check' },
 		javascript = { 'biome-check' },
 		json = { 'biome-check' },
-		nix = { "nixfmt" }
+		nix = { "alejandra" }
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()

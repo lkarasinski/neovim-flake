@@ -100,8 +100,8 @@ let
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
-    nil
-    # nix LSP
+    alejandra
+    nixd
     nixfmt-rfc-style
     typescript
     typescript-language-server

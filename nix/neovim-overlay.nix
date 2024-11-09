@@ -70,6 +70,7 @@ with final.pkgs.lib; let
     # ^ UI
     # language support
     typescript-tools-nvim
+    tailwind-tools-nvim
     # ^ language support
     # navigation/editing enhancement plugins
     vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
@@ -99,6 +100,7 @@ with final.pkgs.lib; let
     nixfmt-rfc-style
     typescript
     typescript-language-server
+    tailwindcss-language-server
     nixd
   ];
 in {

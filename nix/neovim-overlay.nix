@@ -99,6 +99,7 @@ with final.pkgs.lib; let
     nixd
     nixfmt-rfc-style
     typescript
+    rust-analyzer
     typescript-language-server
     tailwindcss-language-server
     nixd

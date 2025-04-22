@@ -3,31 +3,31 @@ if vim.g.did_load_colorscheme_plugin then
 end
 vim.g.did_load_colorscheme_plugin = true
 
--- Default options:
 require('kanagawa').setup({
-	compile = false, -- enable compiling the colorscheme
-	undercurl = true, -- enable undercurls
+	compile = false,
+	undercurl = true,
 	commentStyle = { italic = true },
 	functionStyle = {},
 	keywordStyle = { italic = true },
 	statementStyle = { bold = true },
 	typeStyle = {},
-	transparent = false, -- do not set background color
-	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-	terminalColors = true, -- define vim.g.terminal_color_{0,17}
-	colors = {          -- add/modify theme and palette colors
-		palette = {},
+	transparent = false,
+	dimInactive = false,
+	terminalColors = true,
+	colors = {
+		palette = {
+			dragonBlack3 = "#000000",
+		},
 		theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
 	},
-	overrides = function(colors) -- add/modify highlights
+	overrides = function(colors)
 		return {}
 	end,
-	theme = "dragon", -- Load "wave" theme when 'background' option is not set
-	background = { -- map the value of 'background' option to a theme
-		dark = "dragon", -- try "dragon" !
+	theme = "dragon",
+	background = {
+		dark = "dragon",
 		light = "lotus"
 	},
 })
 
--- setup must be called before loading
 vim.cmd("colorscheme kanagawa")
